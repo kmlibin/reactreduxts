@@ -1,13 +1,14 @@
 import React from 'react';
+import Recorder from '../Recorder';
 
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-hey
+      <Recorder />
     </div>
   );
-}
+};
 
 export default App;
