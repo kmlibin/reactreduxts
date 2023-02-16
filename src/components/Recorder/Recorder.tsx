@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { addZero } from '../../lib/utils';
+
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,7 +14,6 @@ import { selectDateStart, start, stop } from '../../redux/recorder';
 //styles
 import './Recorder.css';
 
-const addZero = (num: number) => (num < 10 ? `0${num}` : `${num}`);
 
 const Recorder: React.FC = () => {
   const dispatch = useDispatch();
