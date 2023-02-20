@@ -12,6 +12,8 @@ import {
 //utils
 import { addZero } from '../../lib/utils';
 
+import EventItem from './EventItem';
+
 //styles
 
 import './Calendar.css';
@@ -75,7 +77,7 @@ const Calendar: React.FC<Props> = ({ events, loadUserEvents }) => {
   if (events.length) {
     groupedEvents = groupEventsByDay(events);
     sortedGroupKeys = Object.keys(groupedEvents).sort(
-      (date1, date2) => +new Date(date1) - +new Date(date2)
+      (date1, date2) => +new Date(date2) - +new Date(date1)
     );
   }
 
@@ -96,17 +98,7 @@ const Calendar: React.FC<Props> = ({ events, loadUserEvents }) => {
             </div>
             <div className="calendar-events">
               {events.map(event => {
-                return (
-                  <div className="calendar-event">
-                    <div className="calendar-event-info">
-                      <div className="calendar-event-time">10:00 - 12:00</div>
-                      <div className="calendar-event-title">{event.title}</div>
-                    </div>
-                    <button className="calendar-event-delete-button">
-                      &times;
-                    </button>
-                  </div>
-                );
+                return <EventItem key={event.id} event={event} />
               })}
             </div>
           </div>

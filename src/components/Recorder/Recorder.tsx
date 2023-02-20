@@ -13,7 +13,7 @@ import { selectDateStart, start, stop } from '../../redux/recorder';
 
 //styles
 import './Recorder.css';
-
+import { createUserEvent, UserEventAction } from '../../redux/user-events';
 
 const Recorder: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,8 +29,9 @@ const Recorder: React.FC = () => {
 
   const handleClick = () => {
     if (started) {
-        window.clearInterval(interval.current)
-        dispatch(stop())
+      window.clearInterval(interval.current);
+      dispatch(createUserEvent());
+      dispatch(stop());
     } else {
       dispatch(start());
       //rerender every second so timer changes on ui. need to preserve value in const from one render to the next, so use useRef hook.
